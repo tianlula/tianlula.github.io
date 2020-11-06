@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <style>
+        body{background: #FFFFFF;color: #000;text-align: center;}
+        a {text-decoration: none;color: #0000FF}
+        a:hover {text-decoration: underline;}
+        img {max-width: 80%;}
+        .ft {font-size: 3rem;font-family: Verdana;text-align: center;margin: 2rem;font-weight: bold;}
+        .ft1 {font-size: 2rem;font-family: Verdana;text-align: center;color: #FF0000;}
+        .header_title {font-weight: bold;font-size: xx-large;}
+        .domain {margin: 0 auto;padding: 0;width: 36rem;display: flex;flex-direction: column;}
+        ul {padding: 0;margin: 0;}
+        .domain-list {list-style: none;}
+        .domain span,.domain a {display: block;}
+        .domain ul {display: flex;padding: 0 .8rem;}
+        .domain ul li {flex: 1;display: flex;flex-direction: column;align-items: center;}
+        .domain ul li div {width: 7.2rem;border-radius: .4rem;background: #FF0000;}
+        .domain ul li div a:first-of-type {color: #FFFFFF;font-size: .8rem;font-weight: bold;padding: .35rem .2rem;text-align: center;margin-bottom: .3rem;text-decoration: none;}
+        .domain ul li span:first-of-type {color: #FF0000;font-size: .85rem;}
+        .domain ul li a:first-of-type {color: #333333;text-decoration: underline;font-size: .8rem;margin-top: .25rem;}
+        .domain .email {display: flex;flex-direction: column;align-items: center;margin-top: 1.5rem;}
+        .domain .email span:nth-of-type(1) {color: #FF0000;font-weight: bold;font-size: 1rem;}
+        .domain .email span:nth-of-type(2) {color: #FF0000;font-size: .85rem;margin-bottom: .8rem;}
+        .domain .email a {border: .05rem solid #FF0000;border-radius: .2rem;width: 8rem;text-align: center;padding: .5rem .8rem;color: #FF0000;font-weight: bold;font-size: 1.3rem;}
+        .container section .state {width: 100%;display: flex;padding: .53333rem 0;}
+        .container section .state>div {width: 50%}
+        .container section .state .s-left {display: flex;display: -webkit-flex;align-items: center;position: relative}
+        .container section .state .s-left .logo {width: 2.13333rem;border-radius: 100%;background: #eba142}
+        .container section .state .s-left .logo img {display: block;width: 100%}
+        .container section .state .s-left .warm {flex: 1}
+        .container section .state .s-left .warm h1 {width: 100%;text-align: center;line-height: .8rem;font-size: 18px}
+        .container section .state .s-left .warm p {width: 100%;text-align: center;font-size: 14px}
+        .container section .state .s-left :before {content: '';display: block;height: 80%;background: #FF0000;width: .02667rem;position: absolute;right: 0;top: 10%}
+        .container section .state .s-right p {text-align: center}
+        @media only screen and (min-width: 320px) and (max-width: 420px) {
+            p { }
+            .ft {font-size: 1.5rem;margin: 1rem 0;}
+            .ft1 {font-size: 1rem;font-weight: bold;}
+            .domain {width: 18rem;}
+            .domain ul {display: block;}
+            .domain ul li {float: left;width: 50%;margin-bottom: 10px;}
+            .domain ul li div {max-width: 6.2rem;border-radius: .4rem;background: #FF0000;}
+            .domain ul li div:first-of-type {padding: .35rem .55rem;}
+            .domain ul li div a:first-of-type {color: #FFFFFF;font-size: .8rem;font-weight: bold;padding: 0;text-align: center;margin-bottom: .3rem;text-decoration: none;}
+            .domain ul li span:first-of-type {font-size: .65rem;}
+            .domain .email {margin-top: .8rem;}
+        }
+    </style>
+
+    <script>
+        var hostjjj=window.location.host.toLowerCase();
+        var url3="";
+        var istiao="1";
+        var LockDomain ="";
+        var url2= ["tzhou.com"];
+        if(url2.length>0){
+            url3 = "http://www." + url2[0];
+        }else{
+            url3 = '';
+        }
+        var LDtemp=["shoucang.com"];
+        if(LDtemp.length>0){
+            LockDomain = LDtemp[0];
+        }
+        for(var i=0;i<LDtemp.length;i++){
+            if (hostjjj.indexOf(LDtemp[i])>=0){
+                istiao="0";
+            }
+        }
+        if (istiao==="1" && LockDomain!==""){
+            top.location.href="http://www." + LockDomain;
+        }
+        document.title = LockDomain;
+        function showmylist(id,ts="pic"){
+            var str=""
+            if(id.length>0){
+                if(id==float||id==indexfloat){
+                    showfloat(id);
+                }else{
+                    for(var i in id){
+                        str+=getmylist(id[i],ts);
+                    }
+                }
+            }
+            document.write(str);
+        }
+        function getmylist(arr,ts){
+            var tmp="";
+            switch(arr["type"]){
+                case "pic":
+                    var w=arr["width"]>0?"width:"+arr['width']+"px;":"";
+                    var h=arr["height"]>0?"height:"+arr['height']+"px;":"";
+                    var st=""
+                    if(w!=""||h!=""){
+                        st='style='+w+h;
+                    }
+                    tmp+="<a href=\""+arr["url"]+"\" target=\"_bank\"><img src=\""+arr["pic"]+"\""+st+"></a>";
+                    break;
+                case "text":
+                    tmp+="<p style='font-weight: bold;font-size: 18px;'><a href=\""+arr["url"]+"\" target=\"_bank\" style=\"color:"+arr["color"]+";background-color:"+arr["bgcolor"]+"\">"+arr["name"]+"</a></p>";
+                    break;
+                case "code":
+                    tmp+=arr["code"]+"\n";
+                    break;
+            }
+            return tmp;
+        }
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <p class="header_title" style="color: #FF0000;margin-top: 30px"></p>
+    <div class="important">
+        <p>
+            ⇧ ⇧ ⇧ 請牢記本站最新網址 ⇧ ⇧ ⇧
+        </p>
+        <p>
+            本站經常會更換域名,請多記幾個本站域名防止失聯
+        </p>
+    </div>
+    <br />
+    <div class="ft">
+        <a id="tiaozhuan" href="javascript:void(0);">-- 滿 18 歲,請按此 --</a>
+    </div>
+    <br />
+
+    <div class="enter_notice">
+
+    </div>
+    <p style="color:#FF0000;">
+        本站海外(翻墻)永久網址 www.52avav.com 本站經常會更換網站域名，請收藏10個以上最新域名，才可保證永久訪問本站！
+    </p>
+    <p style="color:#FF0000;">
+        如果點擊進入後打不開本站，請換（電信或聯通）網絡在訪問本站，移動網絡頻繁屏蔽本站～
+    </p>
+
+    <p>
+        <br />
+        <span><b>警告 / WARNING </b><br /></span><br />
+        本物品內容可能令人反感；不可將本物品內容派發，傳閱，出售，出租，交給<br />
+        或出借予年齡未滿 18 歲的人士出示，播放或播映。<br />
+        <br />
+        <span>This article contains material which may offernd and may not be
+            distributed, circulated, sold, hired, given, lent, shown, <br />
+played or projected to a person under the age of 18 years. All models are 18 or
+            older. </span>
+    </p>
+</div>
+<script>
+    var iswww=hostjjj.indexOf('www.')>-1?'':'www.';
+    var ishttps = 'https:' === document.location.protocol ? 'https://': 'http://';
+    var url=window.url3;
+    document.getElementsByClassName('header_title').item(0).innerHTML=iswww+hostjjj;
+
+    
+    
+    
+    
+
+    var txt="正在进入本站……\r\n" +
+        "提示：请复制域名去手机浏览器中打开，请勿在微信和QQ中打开，因为包含成人内容。尽量使用谷歌浏览器，火狐浏览器，或者苹果安卓系统自带浏览器访问～\r\n"+
+        "本站由于经常被屏蔽域名，请务必多保存地址，以防丢失本站。"
+
+    document.getElementById("tiaozhuan").onclick=function (){
+        if(confirm(txt)){
+            window.location.href=url3+"/index.html";}
+    };
+</script>
+<div style="display: none"></div>
+</body>
+</html>
